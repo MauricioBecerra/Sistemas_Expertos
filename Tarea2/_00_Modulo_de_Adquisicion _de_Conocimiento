@@ -1,0 +1,46 @@
+# Clase para el Módulo de Adquisición de Conocimiento
+class KnowledgeAcquisitionModule:
+    def __init__(self, knowledge_base, facts_base):
+        self.knowledge_base = knowledge_base  # Referencia a la Base de Conocimiento
+        self.facts_base = facts_base          # Referencia a la Base de Hechos
+    
+    def acquire_from_expert(self, rule):
+        """Simula la adquisición de conocimiento de un experto"""
+        # Añadir la regla a la base de conocimiento
+        self.knowledge_base.add_rule(rule)
+        print(f"Conocimiento adquirido del experto: {rule}")
+    
+    def acquire_from_sensor(self, sensor_data):
+        """Simula la adquisición de hechos de sensores"""
+        # Procesar los datos del sensor y añadir como hecho
+        fact = f"Sensor data: {sensor_data}"
+        self.facts_base.add_fact(fact)
+        print(f"Datos adquiridos del sensor: {fact}")
+    
+    def acquire_from_database(self, data):
+        """Simula la adquisición de hechos desde una base de datos"""
+        for fact in data:
+            self.facts_base.add_fact(f"Database fact: {fact}")
+        print(f"Datos adquiridos de la base de datos: {data}")
+
+# Ejemplo de uso
+
+# Definimos la Base de Conocimiento y Base de Hechos
+knowledge_base = KnowledgeBase()
+facts_base = FactsBase()
+
+# Crear el módulo de adquisición de conocimiento
+acquisition_module = KnowledgeAcquisitionModule(knowledge_base, facts_base)
+
+# Simulamos la adquisición de conocimiento desde un experto
+acquisition_module.acquire_from_expert("If temperature > 30 then turn on fan")
+
+# Simulamos la adquisición de datos desde un sensor
+acquisition_module.acquire_from_sensor({"temperature": 32, "humidity": 40})
+
+# Simulamos la adquisición de datos desde una base de datos
+acquisition_module.acquire_from_database(["User logged in", "System update required"])
+
+# Mostrar reglas y hechos actualizados
+print("Reglas actuales:", knowledge_base.get_rules())
+print("Hechos actuales:", facts_base.get_facts())
