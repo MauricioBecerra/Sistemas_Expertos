@@ -1,4 +1,4 @@
-#Mauricio Becerra Guzman - 21310105
+ # Mauricio Becerra Guzman - 21310105
 
 import json
 import random
@@ -9,24 +9,18 @@ from nltk.tokenize import word_tokenize
 
 nltk.download('punkt')
 
-def load_responses():
-    global responses
-    try:
-        with open('responses.json', 'r') as f:
-            responses = json.load(f)
-    except FileNotFoundError:
-        responses = {}  # Si el archivo no existe, inicializa como diccionario vacío
-    except json.JSONDecodeError:
-        responses = {}  # Si hay un error de decodificación, también inicializa como diccionario vacío
-      
+nltk.download('punkt_tab')
+
+
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
 
-# Inicializar diccionario para almacenar palabras clave y respuestas
-responses = {}
+
+#responses = {}
+
 
 # Función para agregar nuevas palabras clave y respuestas al diccionario
 def add_response(update, context):
@@ -34,24 +28,25 @@ def add_response(update, context):
         keywords = context.args[:-1]
         response2 = context.args[-1]
         response = str(response2).replace('_', ' ')
-        
+
         if not keywords:
             update.message.reply_text("Por favor, proporciona al menos una palabra clave.")
             return
-        
+
         for keyword in keywords:
             if keyword in responses:
                 responses[keyword].add(response)
             else:
                 responses[keyword] = {response}
-        
+
         update.message.reply_text("¡Palabra clave y respuesta agregadas!")
         save_responses()
-    
+
     except IndexError:
         update.message.reply_text("Error: Asegúrate de proporcionar palabras clave y una respuesta.")
     except Exception as e:
         update.message.reply_text(f"Se produjo un error: {e}")
+
 
 # Función para manejar mensajes recibidos por el bot
 def handle_message(update, context):
@@ -70,7 +65,8 @@ def handle_message(update, context):
         if match:
             context.bot.send_message(chat_id=update.effective_chat.id, text=match)
         else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento, no entiendo lo que estás preguntando.")
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Lo siento, no entiendo lo que estás preguntando.")
 
     bot_name2 = "botsi"
     if bot_name2 in message:
@@ -83,7 +79,9 @@ def handle_message(update, context):
         if match:
             context.bot.send_message(chat_id=update.effective_chat.id, text=match)
         else:
-            context.bot.send_message(chat_id=update.effective_chat.id, text="Lo siento, no entiendo lo que estás preguntando.")
+            context.bot.send_message(chat_id=update.effective_chat.id,
+                                     text="Lo siento, no entiendo lo que estás preguntando.")
+
 
 # Función para remover respuestas del diccionario
 def remove_response(update, context):
@@ -96,26 +94,46 @@ def remove_response(update, context):
     else:
         update.message.reply_text("La palabra clave o la respuesta no se encuentra en la memoria del bot.")
 
+
 def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
+
 
 def start(update, context):
     user = update.effective_user['username']
     """Send a message when the command /start is issued."""
     update.message.reply_text(f'Hola @{user}, soy Botsi :D')
 
+
 def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Este es un bot de conversacion y de apoyo de comunicacion con otros usuarios')
 
 def save_responses():
-    with open('responses.json', 'w') as f:
-        json.dump(responses, f)
+    with open('responses.txt', 'w') as f:
+        for keyword, responses_set in responses.items():
+            for response in responses_set:
+                f.write(f"{keyword}::{response}\n")  # Usamos "::" como delimitador
+
+def load_responses():
+    global responses
+    responses = {}
+    try:
+        with open('responses.txt', 'r') as f:
+            for line in f:
+                keyword, response = line.strip().split('::', 1)  # Divide por el delimitador
+                if keyword in responses:
+                    responses[keyword].add(response)
+                else:
+                    responses[keyword] = {response}
+    except FileNotFoundError:
+        responses = {}  # Si el archivo no existe, inicializa como diccionario vacío
 
 def main():
+    load_responses()
     # Inicializar bot
-    updater = Updater("TOKEN", use_context=True)
+    updater = Updater("5015528233:AAETYuuWQsEeFKIcTf3122d_0vPk_cFROQA", use_context=True)
     dp = updater.dispatcher
 
     # Agregar manejadores de comandos
@@ -134,6 +152,7 @@ def main():
     updater.start_polling()
     updater.idle()
 
+
 if __name__ == '__main__':
-    load_responses()
+    
     main()
