@@ -36,6 +36,7 @@ def add_response(update, context):
                 responses[keyword] = {response}
         
         update.message.reply_text("¡Palabra clave y respuesta agregadas!")
+        save_responses()
     
     except IndexError:
         update.message.reply_text("Error: Asegúrate de proporcionar palabras clave y una respuesta.")
@@ -97,6 +98,11 @@ def start(update, context):
 def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Este es un bot de conversacion y de apoyo de comunicacion con otros usuarios')
+
+def save_responses():
+    with open('responses.json', 'w') as f:
+        json.dump(responses, f)
+
 def main():
     # Inicializar bot
     updater = Updater("TOKEN", use_context=True)
