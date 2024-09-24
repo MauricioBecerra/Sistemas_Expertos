@@ -9,6 +9,16 @@ from nltk.tokenize import word_tokenize
 
 nltk.download('punkt')
 
+def load_responses():
+    global responses
+    try:
+        with open('responses.json', 'r') as f:
+            responses = json.load(f)
+    except FileNotFoundError:
+        responses = {}  # Si el archivo no existe, inicializa como diccionario vacío
+    except json.JSONDecodeError:
+        responses = {}  # Si hay un error de decodificación, también inicializa como diccionario vacío
+      
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -125,4 +135,5 @@ def main():
     updater.idle()
 
 if __name__ == '__main__':
+    load_responses()
     main()
