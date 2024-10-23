@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "Perro",
+        "plumas": false,
+        "acuatico": false,
+        "domestico": true
+    },
+    {
+        "nombre": "Pato",
+        "plumas": true,
+        "acuatico": true,
+        "domestico": false
+    },
+    {
+        "nombre": "Gato",
+        "plumas": false,
+        "acuatico": false,
+        "domestico": true
+    }
+]
