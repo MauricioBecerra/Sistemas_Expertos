@@ -1,0 +1,234 @@
+{
+    "fallas": [
+      {
+        "nombre": "Batería dañada",
+        "atributos": {
+          "enciende": false,
+          "carga": false,
+          "pantalla_tactil": true,
+          "display": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true,
+          "vibra": false
+          
+        },
+        "soluciones": [
+          "Reemplazar la batería",
+          "Revisar el cargador"
+        ]
+      },
+      {
+        "nombre": "Touch",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": false,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true
+        },
+        "soluciones": [
+          "Reemplazar la pantalla"
+        ]
+      },
+      {
+        "nombre": "Micrófono no funciona",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": true,
+          "microfono": false,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true
+        },
+        "soluciones": [
+          "Revisar permisos de la aplicación",
+          "Reemplazar el micrófono"
+        ]
+      },
+      {
+        "nombre": "Altavoz no funciona",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": true,
+          "microfono": true,
+          "bocina": false,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true
+        },
+        "soluciones": [
+          "Revisar configuraciones de sonido",
+          "Reemplazar el altavoz"
+        ]
+      },
+      {
+        "nombre": "Conector de carga dañado",
+        "atributos": {
+          "enciende": true,
+          "carga": false,
+          "pantalla_tactil": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": false,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true,
+          "conector": true
+        },
+        "soluciones": [
+          "Reparar o reemplazar el conector de carga"
+        ]
+      },
+      {
+        "nombre": "Cámara no funciona",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": false,
+          "sensor": true,
+          "antena": true,
+          "huella": true
+        },
+        "soluciones": [
+          "Actualizar la aplicación de la cámara",
+          "Reemplazar la cámara"
+        ]
+      },
+      {
+        "nombre": "Sensor de proximidad defectuoso",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": false,
+          "antena": true,
+          "huella": true
+        },
+        "soluciones": [
+          "Calibrar el sensor de proximidad",
+          "Reemplazar el sensor"
+        ]
+      },
+      {
+        "nombre": "Wi-Fi no funciona",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": false,
+          "huella": true
+        },
+        "soluciones": [
+          "Reiniciar el router",
+          "Actualizar configuraciones Wi-Fi",
+          "Reparar el módulo Wi-Fi"
+        ]
+      },
+      {
+        "nombre": "Sensor de huella dactilar no funciona",
+        "atributos": {
+          "enciende": true,
+          "carga": true,
+          "pantalla_tactil": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": false
+        },
+        "soluciones": [
+          "Limpiar el sensor de huella dactilar",
+          "Reemplazar el sensor de huella"
+        ]
+      },
+      {
+        "nombre": "Display",
+        "atributos": {
+          "enciende": false,
+          "carga": true,
+          "pantalla_tactil": true,
+          "display": false,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true,
+          "vibra": true
+        },
+        "soluciones": [
+          "Cambiar el display",
+          "Checar el conector display"
+        ]
+      },
+      {
+        "nombre": "Boton de encendido",
+        "atributos": {
+          "enciende": false,
+          "carga": true,
+          "pantalla_tactil": true,
+          "display": true,
+          "microfono": true,
+          "bocina": true,
+          "voltaje": true,
+          "camara": true,
+          "sensor": true,
+          "antena": true,
+          "huella": true,
+          "vibra": false
+        },
+        "soluciones": [
+          "Cambiar el boton"
+        ]
+      }
+    ],
+    "atributos": [
+      {"clave": "enciende", "pregunta": "El dispositivo enciende?"},
+      {"clave": "pantalla_tactil", "pregunta": "La pantalla responde al tacto?"},
+      {"clave": "vibra", "pregunta": "El dispositivo vibra o hace sonido al presionar el boton de encendido?"},
+      {"clave": "display", "pregunta": "La pantalla mostraba imagen correctamente?"},
+      {"clave": "bocina", "pregunta": "El dispositivo reproduce audio correctamente?"},
+      {"clave": "voltaje", "pregunta": "El dispositivo muestra que esta cargando?"},
+      {"clave": "camara", "pregunta": "La camara muestra una imagen al usarla?"},
+      {"clave": "sensor", "pregunta": "La pantalla se apaga correctamente durante las llamadas?"},
+      {"clave": "antena", "pregunta": "El dispositivo se conecta correctamente a una red?"},
+      {"clave": "carga", "pregunta": "La bateria tiene una duracion adecuada?"},
+      {"clave": "microfono", "pregunta": "El microfono graba audio correctamente?"},
+      {"clave": "conector", "pregunta": "El conector de carga muestra signos visibles de dano?"},
+      {"clave": "huella", "pregunta": "El dispositivo detecta tu huella?"}
+    ]
+  }
